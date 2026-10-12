@@ -1,0 +1,287 @@
+# ==============================================================================
+# .gitignore — Projeto Medallion (Azure Data Factory + Databricks + Delta Lake)
+# ==============================================================================
+# Nada de segredo, credencial, token ou dado bruto deve chegar ao repositório.
+# Os artefatos publicáveis são mantidos de propósito:
+#   notebooks/*.ipynb, adf/*.json, databricks/*.yml, docs/img/*
+# ==============================================================================
+
+
+# ------------------------------------------------------------------------------
+# 1. Segredos, credenciais e tokens (NUNCA versionar)
+# ------------------------------------------------------------------------------
+# Variáveis de ambiente e arquivos de segredo
+.env
+.env.*
+!.env.example
+*.env
+secrets/
+secret/
+*.secret
+*.secrets
+credentials.*
+credential.*
+*token*.json
+*token*.txt
+secrets.json
+credentials.json
+
+# Chaves e certificados
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+*.der
+*.jks
+*.keystore
+*.ppk
+*.asc
+id_rsa*
+id_ed25519*
+id_ecdsa*
+known_hosts
+
+# Microsoft / Azure / Azure CLI
+.azure/
+azureProfile.json
+az.json
+accessTokens.json
+*.publishsettings
+*.pubxml
+*.pubxml.user
+serviceprincipal*.json
+*service-principal*.json
+azure-credentials.*
+azureauth.json
+
+# Azure Data Factory — configuração local/segredos
+adf/local.settings.json
+local.settings.json
+*linkedService*.secrets.json
+
+# Databricks — CLI e autenticação
+.databrickscfg
+.databricks/
+databricks.cfg
+*.dbc
+.dbdemos/
+dbx/
+databricks_token*
+*.pat
+pat.txt
+
+# dbt (profiles contém credenciais do warehouse)
+.dbt/
+profiles.yml
+dbt_project/.user.yml
+
+# Terraform / infraestrutura como código (se adicionada depois)
+.terraform/
+.terraform.tfstate.lock.info
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Configurações genéricas de nuvem e notebooks
+.netrc
+_netrc
+kaggle.json
+*gcloud*.json
+
+
+# ------------------------------------------------------------------------------
+# 2. Dados e artefatos de dados (brutos, processados e gerados)
+# ------------------------------------------------------------------------------
+# Diretórios de camadas e áreas de trabalho locais
+data/
+dados/
+bronze/
+silver/
+gold/
+raw/
+landing/
+checkpoints/
+metadata/
+warehouse/
+lakehouse/
+delta/
+parquet/
+*.delta/
+
+# Formatos de arquivos de dados (o CSV bruto e saídas não vão para o Git)
+*.csv
+*.tsv
+*.psv
+*.parquet
+*.avro
+*.orc
+*.jsonl
+*.ndjson
+*.feather
+*.sas7bdat
+*.rds
+*.rda
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.arrow
+*.xlsx
+*.xlsm
+*.xls
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+*.accdb
+*.bak
+*.dump
+
+# Delta Lake: logs transacionais gerados
+_delta_log/
+
+# Spark: saídas e estado locais
+spark-warehouse/
+metastore_db/
+derby.log
+derby.log.*
+.spark/
+.ivy2/
+.ivy/
+jars/
+dbfs/
+
+
+# ------------------------------------------------------------------------------
+# 3. Notebooks: execução, checkpoints e cache
+# ------------------------------------------------------------------------------
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+*.nbconvert.ipynb
+# Recomendado: use `nbstripout` para remover outputs dos notebooks antes do commit
+# (os outputs podem conter e-mails e dados de clientes).
+
+
+# ------------------------------------------------------------------------------
+# 4. Python — caches, ambientes e builds
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.venv/
+venv/
+ENV/
+env/
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+hypothesis/
+
+
+# ------------------------------------------------------------------------------
+# 5. Logs, temporários e arquivos de sistema operacional
+# ------------------------------------------------------------------------------
+*.log
+logs/
+log/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+# Arquivos temporários do OneDrive / Office
+~$*
+.~lock.*#
+.Thumbs.db
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+.fseventsd
+TemporaryItems
+
+
+# ------------------------------------------------------------------------------
+# 6. IDE e editores (configuração local, caminhos e IDs da máquina)
+# ------------------------------------------------------------------------------
+.idea/
+*.iml
+.vscode/
+!.vscode/settings.json.example
+!.vscode/extensions.json
+*.ipr
+*.iws
+out/
+.settings/
+.project
+.classpath
+*.sublime-workspace
+*.sublime-project
+.atom/
+.history/
+
+
+# ------------------------------------------------------------------------------
+# 7. Empacotamento e outros
+# ------------------------------------------------------------------------------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+!docs/img/*.zip
+
+# Node (caso o projeto ganhe componentes JS)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*

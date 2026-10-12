@@ -1,0 +1,28 @@
+resources:
+  jobs:
+    job_medallion:
+      name: job_medallion
+      tasks:
+        - task_key: bronze_to_silver
+          notebook_task:
+            notebook_path: /Workspace/Users/<seu-usuario>/01_bronze_to_silver
+            source: WORKSPACE
+          min_retry_interval_millis: 900000
+          disable_auto_optimization: true
+          environment_key: default
+        - task_key: silver_to_gold
+          depends_on:
+            - task_key: bronze_to_silver
+          notebook_task:
+            notebook_path: /Workspace/Users/<seu-usuario>/02_silver_to_gold
+            source: WORKSPACE
+          min_retry_interval_millis: 900000
+          disable_auto_optimization: true
+          environment_key: default
+      queue:
+        enabled: true
+      environments:
+        - environment_key: default
+          spec:
+            client: "6"
+      performance_target: PERFORMANCE_OPTIMIZED
