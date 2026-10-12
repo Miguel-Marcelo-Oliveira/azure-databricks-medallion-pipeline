@@ -28,8 +28,8 @@ azure-databricks-medallion-pipeline/
 ├── DECISOES_E_APRENDIZADOS.md
 ├── .gitignore
 ├── notebooks/
-│   ├── 01_bronze_to_silver.py
-│   └── 02_silver_to_gold.py
+│   ├── 01_bronze_to_silver.ipynib
+│   └── 02_silver_to_gold.ipynib
 ├── adf/
 │   └── pl_ingest_sales_to_bronze.json
 ├── databricks/
