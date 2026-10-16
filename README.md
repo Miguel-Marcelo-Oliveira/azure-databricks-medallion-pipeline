@@ -28,8 +28,8 @@ azure-databricks-medallion-pipeline/
 ├── DECISOES_E_APRENDIZADOS.md
 ├── .gitignore
 ├── notebooks/
-│   ├── 01_bronze_to_silver.ipynib
-│   └── 02_silver_to_gold.ipynib
+│   ├── 01_bronze_to_silver.ipynb
+│   └── 02_silver_to_gold.ipynb
 ├── adf/
 │   └── pl_ingest_sales_to_bronze.json
 ├── databricks/
@@ -96,6 +96,14 @@ Notebook `02_silver_to_gold` (~24s no Job) gera três tabelas agregadas:
 | Formato       | Delta Lake (Parquet)                                                    |
 | Custos        | Azure Cost Management, orçamento com alertas                            |
 
+## Encerramento do ambiente
+
+Os recursos do Azure foram desativados em 16/10/2026, após a conclusão do projeto
+(Resource Group, Storage, Data Factory, workspace Databricks e Access Connector
+excluídos; Unity Catalog limpo; token de acesso revogado). Por isso o pipeline
+não está mais em execução. O código, as definições do pipeline e do Job
+(`adf/` e `databricks/`) e as evidências em `docs/img/` permitem recriá-lo.
+
 ## Recursos no Azure
 
 | Recurso               | Nome                                                                                                  |
@@ -128,7 +136,7 @@ Os desafios abaixo foram resolvidos durante o projeto. Detalhes em [`DECISOES_E_
 
 ## Custos
 
-Projeto executado na conta Azure for Students. Em outubro de 2026, o gasto total foi de aproximadamente **US$ 10,72 (≈ R$ 54)**, cerca de 11% do crédito de US$ 100, concentrado em Databricks (US$ 10,69); o Data Factory somou US$ 0,02, o Storage menos de US$ 0,01 e a transferência de dados US$ 0,00. O gasto se concentrou nos dias de desenvolvimento e depuração (9 e 10 de outubro) e não cresceu depois, com o projeto parado. Um orçamento mensal de US$ 15 com alertas em 25%, 50%, 75%, 90% e 100% foi configurado.
+Projeto executado na conta Azure for Students. Em outubro de 2026, o gasto total em Outubro foi de aproximadamente **US$ 10,72 (≈ R$ 54)**, cerca de 11% do crédito de US$ 100, concentrado em Databricks (US$ 10,69); o Data Factory somou US$ 0,02, o Storage menos de US$ 0,01 e a transferência de dados US$ 0,00. O gasto se concentrou nos dias de desenvolvimento e depuração (9 e 10 de outubro) e não cresceu depois, com o projeto parado. Um orçamento mensal de US$ 15 com alertas em 25%, 50%, 75%, 90% e 100% foi configurado.
 
 ## Limitações e próximos passos
 
